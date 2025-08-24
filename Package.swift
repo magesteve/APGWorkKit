@@ -13,9 +13,15 @@ let package = Package(
             name: "APGWorkKit",
             targets: ["APGWorkKit"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/magesteve/APGIntentKit.git", from: "0.3.0"),    ],
     targets: [
         .target(
-            name: "APGWorkKit"),
+            name: "APGWorkKit",
+            dependencies: [
+                "APGIntentKit"
+            ]
+        ),
         .testTarget(
             name: "APGWorkKitTests",
             dependencies: ["APGWorkKit"]
