@@ -34,9 +34,20 @@ public class APGWorkMacApp {
     
     /// Setup App stuff
     public static func appPrepare() {
-        APGIntentMacTools.addAppMenuIntents(about: [ APGWorkShared.tokenAbout ] )
-        APGIntentMacTools.addHelpMenuIntents(help: [ String(), APGWorkShared.tokenWhatsNew ] )
+        var listTokens: [String] = []
+        
+        listTokens = [APGWorkShared.tokenAbout]
+        if let addList = APGWorkGlobals.shared.aboutTokens {
+            listTokens.append(contentsOf: addList)
+        }
+        APGIntentMacTools.addAppMenuIntents(about: listTokens)
 
+        listTokens = [String(), APGWorkShared.tokenWhatsNew]
+        if let addList = APGWorkGlobals.shared.helpTokens {
+            listTokens.append(contentsOf: addList)
+        }
+        APGIntentMacTools.addHelpMenuIntents(help: listTokens)
+        
         APGIntentActionList.sharedApp.addAction(token: APGWorkShared.tokenAbout) { _ in
             APGWorkMacAbout.show()
         }

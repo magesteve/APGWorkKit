@@ -15,8 +15,12 @@ import SwiftUI
 /// UI state and links used by Work UI. Main-thread only.
 @MainActor
 public final class APGWorkGlobals {
+    // MARK: - Static Variables
+    ///
     /// Singleton reference
     public static let shared = APGWorkGlobals()
+
+    // MARK: - Public Variables
 
     /// Color used in Work UI (optional theme override)
     public var workUIColor: Color?
@@ -35,8 +39,26 @@ public final class APGWorkGlobals {
 
     /// Optional external "Complete Feature List" reference (URL/file)
     public var featuresListLink: String = ""
+        
+    /// Additional about menu item Token
+    public var aboutTokens: [String]?
 
-    private init() {}
+    /// Additional help menu item Token
+    public var helpTokens: [String]?
+
+    // MARK: - Init
+    
+    /// do nothing init
+    public init() {}
+    
+    // MARK: - Public Functions
+
+    /// Add additional items to premade intents
+    public func addAdditionalMenuIntents(about: [String]? = nil,
+                                         help: [String]? = nil) {
+        self.aboutTokens = about
+        self.helpTokens = help
+    }
 }
 
 // MARK: - Enum
