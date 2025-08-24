@@ -9,6 +9,7 @@
 
 import Foundation
 import SwiftUI
+import APGCantripKit
 
 // MARK: - Class
 
@@ -103,48 +104,23 @@ public enum APGWorkShared {
     public static let sfFAQToken    = "questionmark.bubble"
     public static let sfWelcomeToken = "hand.wave"
 
-    // MARK: Regex
-
-    public static let regexIsUrl = #"^(https?://)[^\s/$.?#].[^\s]*$"#
-    public static let regexIsOpenableFile = #"^.+\.(pdf|txt|jpg|mpg)$"#.lowercased()
-
     // MARK: Bundle-derived strings
-
-    /// App name from bundle.
-    public static var appName: String? {
-        let nameKey = kCFBundleNameKey as String
-        return Bundle.main.object(forInfoDictionaryKey: nameKey) as? String
-    }
-
-    /// "Version X.Y.Z (Build)" string.
-    public static var appVersionString: String {
-        let versionKey = "CFBundleShortVersionString"
-        let version = Bundle.main.object(forInfoDictionaryKey: versionKey) as? String ?? "1.0"
-
-        let buildKey = kCFBundleVersionKey as String
-        let build = Bundle.main.object(forInfoDictionaryKey: buildKey) as? String ?? ""
-
-        return APGWorkShared.version + APGWorkShared.space + version + (build.isEmpty ? "" : APGWorkShared.space + build)
-    }
-
-    /// Copyright from bundle, if present.
-    public static var copyrightString: String? {
-        Bundle.main.object(forInfoDictionaryKey: "NSHumanReadableCopyright") as? String
-    }
 
     /// Title for About window.
     public static var aboutAppName: String {
-        if let name = appName {
-            return about + space + name
-        }
-        return about
+        let name = APGCantrip.appName()
+
+        guard name.isEmpty else { return about }
+        
+        return about + space + name
     }
 
     /// Title for What's New window.
     public static var whatsNewAppName: String {
-        if let name = appName {
-            return whatsNew + space + inString + space + name
-        }
-        return whatsNew
+        let name = APGCantrip.appName()
+
+        guard name.isEmpty else { return whatsNew }
+        
+        return whatsNew + space + inString + space + name
     }
 }

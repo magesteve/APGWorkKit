@@ -61,34 +61,6 @@ public class APGWorkMacApp {
     public static func appStart() {
     }
     
-    /// Open Reference (URL, PDF, other)
-    public static func openRef(_ text: String) {
-        guard !text.isEmpty else { return }
-        
-        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        if trimmed.range(of: APGWorkShared.regexIsUrl, options: [.regularExpression, .caseInsensitive]) != nil {
-            guard let url = URL(string: trimmed) else {
-                return
-            }
-            
-            NSWorkspace.shared.open(url)
-        } else if trimmed.range(of: APGWorkShared.regexIsOpenableFile, options: [.regularExpression, .caseInsensitive]) != nil {
-            let fileURL: URL?
-            
-            // First try loading from bundle (embedded resources)
-            if let resourceURL = Bundle.main.url(forResource: trimmed, withExtension: nil) {
-                fileURL = resourceURL
-            } else {
-                // Fall back to assuming it's a full path
-                fileURL = URL(fileURLWithPath: trimmed)
-            }
-            
-            if let fileURL = fileURL, FileManager.default.fileExists(atPath: fileURL.path) {
-                NSWorkspace.shared.open(fileURL)
-            }
-        }
-    }
 }
 
 #endif

@@ -14,12 +14,13 @@ let package = Package(
             targets: ["APGWorkKit"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/magesteve/APGIntentKit.git", from: "0.3.0"),    ],
+        .package(url: "https://github.com/magesteve/APGCantripKit.git", from: "0.1.0"),
+        .package(url: "https://github.com/magesteve/APGIntentKit.git", from: "0.4.0"),    ],
     targets: [
         .target(
             name: "APGWorkKit",
             dependencies: [
-                "APGIntentKit"
+                "APGCantripKit", "APGIntentKit"
             ]
         ),
         .testTarget(

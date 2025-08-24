@@ -8,6 +8,8 @@
 //  Custom iWork-style About box
 //
 
+import APGCantripKit
+
 #if os(macOS)
 import Cocoa
 import SwiftUI
@@ -67,22 +69,24 @@ private struct APGWorkMacAboutView: View {
                                     }
                                 }
 
-                                if let appName = APGWorkShared.appName {
+                                let appName = APGCantrip.appName()
+                                if !appName.isEmpty {
                                     Text(appName)
                                         .font(.system(size: 22))
                                         .bold()
                                         .padding(.top, APGWorkGlobals.shared.aboutSymbolName.isEmpty ? 0 : 8)
                                 }
 
-                                Text(APGWorkShared.appVersionString)
+                                Text(APGCantrip.appVersionString())
                                     .font(.subheadline)
                                     .padding(.bottom, 8)
                             }
 
                             Spacer()
 
-                            if let copy = APGWorkShared.copyrightString {
-                                Text(copy)
+                            let text = APGCantrip.copyrightString()
+                            if !text.isEmpty {
+                                Text(text)
                                     .font(.footnote)
                                     .foregroundColor(.secondary)
                                     .padding(.bottom, 4)
@@ -99,12 +103,12 @@ private struct APGWorkMacAboutView: View {
                 Spacer()
                 if !APGWorkGlobals.shared.aboutAcknowledgmentsLink.isEmpty {
                     Button(APGWorkShared.acknowledgments) {
-                        APGWorkMacApp.openRef(APGWorkGlobals.shared.aboutAcknowledgmentsLink)
+                        APGCantrip.openRef(APGWorkGlobals.shared.aboutAcknowledgmentsLink)
                     }
                 }
                 if !APGWorkGlobals.shared.aboutLicensesLink.isEmpty {
                     Button(APGWorkShared.licenses) {
-                        APGWorkMacApp.openRef(APGWorkGlobals.shared.aboutLicensesLink)
+                        APGCantrip.openRef(APGWorkGlobals.shared.aboutLicensesLink)
                     }
                 }
             }

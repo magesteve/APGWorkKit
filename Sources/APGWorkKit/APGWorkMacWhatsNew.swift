@@ -7,6 +7,8 @@
 //  Custom iWork-style What's New box
 //
 
+import APGCantripKit
+
 #if os(macOS)
 import Cocoa
 import SwiftUI
@@ -104,7 +106,7 @@ private struct APGWorkMacWhatsNewView: View {
                                 .font(.title2)
                                 .foregroundColor(customColor)
                                 .onTapGesture {
-                                    APGWorkMacApp.openRef(APGWorkGlobals.shared.featuresListLink)
+                                    APGCantrip.openRef(APGWorkGlobals.shared.featuresListLink)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 8)
@@ -114,7 +116,7 @@ private struct APGWorkMacWhatsNewView: View {
                                 .font(.title2)
                                 .foregroundColor(.blue)
                                 .onTapGesture {
-                                    APGWorkMacApp.openRef(APGWorkGlobals.shared.featuresListLink)
+                                    APGCantrip.openRef(APGWorkGlobals.shared.featuresListLink)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 8)
