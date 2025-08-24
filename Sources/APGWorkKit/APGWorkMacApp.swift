@@ -37,11 +37,11 @@ public class APGWorkMacApp {
         APGIntentMacTools.addAppMenuIntents(about: [ APGWorkShared.tokenAbout ] )
         APGIntentMacTools.addHelpMenuIntents(help: [ String(), APGWorkShared.tokenWhatsNew ] )
 
-        APGIntentActionList.sharedApp.addAction(token: APGWorkShared.tokenAbout) {
+        APGIntentActionList.sharedApp.addAction(token: APGWorkShared.tokenAbout) { _ in
             APGWorkMacAbout.show()
         }
 
-        APGIntentActionList.sharedApp.addAction(token: APGWorkShared.tokenWhatsNew) {
+        APGIntentActionList.sharedApp.addAction(token: APGWorkShared.tokenWhatsNew) { _ in
             APGWorkMacWhatsNew.show()
         }
     }

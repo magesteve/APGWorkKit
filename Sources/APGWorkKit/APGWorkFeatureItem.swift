@@ -1,5 +1,5 @@
 //
-//  APGWorkFeaturesItem.swift
+//  APGWorkFeatureItem.swift
 //  APGWorkKit
 //
 //  Created by Steve Sheets on 8/18/25.
@@ -12,7 +12,7 @@ import Foundation
 
 /// Represents a single feature item in the What's New or feature promotion UI.
 /// Includes title, description, optional image name, and full Codable/JSONAble support.
-public struct APGWorkFeaturesItem: Identifiable, Hashable, Equatable, Codable {
+public struct APGWorkFeatureItem: Identifiable, Hashable, Equatable, Codable {
 
     // MARK: - Properties
 

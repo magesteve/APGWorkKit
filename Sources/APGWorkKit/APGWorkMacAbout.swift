@@ -56,8 +56,8 @@ private struct APGWorkMacAboutView: View {
                     GeometryReader { geo in
                         VStack(alignment: .leading, spacing: 0) {
                             VStack(alignment: .leading, spacing: 6) {
-                                if !APGWorkShared.aboutSymbolName.isEmpty {
-                                    if let nsImage = NSImage(systemSymbolName: APGWorkShared.aboutSymbolName, accessibilityDescription: String()) {
+                                if !APGWorkGlobals.shared.aboutSymbolName.isEmpty {
+                                    if let nsImage = NSImage(systemSymbolName: APGWorkGlobals.shared.aboutSymbolName, accessibilityDescription: String()) {
                                         Image(nsImage: nsImage)
                                             .renderingMode(.original)
                                             .interpolation(.high)
@@ -71,7 +71,7 @@ private struct APGWorkMacAboutView: View {
                                     Text(appName)
                                         .font(.system(size: 22))
                                         .bold()
-                                        .padding(.top, APGWorkShared.aboutSymbolName.isEmpty ? 0 : 8)
+                                        .padding(.top, APGWorkGlobals.shared.aboutSymbolName.isEmpty ? 0 : 8)
                                 }
 
                                 Text(APGWorkShared.appVersionString)
@@ -97,14 +97,14 @@ private struct APGWorkMacAboutView: View {
 
             HStack {
                 Spacer()
-                if !APGWorkShared.aboutAcknowledgmentsLink.isEmpty {
+                if !APGWorkGlobals.shared.aboutAcknowledgmentsLink.isEmpty {
                     Button(APGWorkShared.acknowledgments) {
-                        APGWorkMacApp.openRef(APGWorkShared.aboutAcknowledgmentsLink)
+                        APGWorkMacApp.openRef(APGWorkGlobals.shared.aboutAcknowledgmentsLink)
                     }
                 }
-                if !APGWorkShared.aboutLicensesLink.isEmpty {
+                if !APGWorkGlobals.shared.aboutLicensesLink.isEmpty {
                     Button(APGWorkShared.licenses) {
-                        APGWorkMacApp.openRef(APGWorkShared.aboutLicensesLink)
+                        APGWorkMacApp.openRef(APGWorkGlobals.shared.aboutLicensesLink)
                     }
                 }
             }

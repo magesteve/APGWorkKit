@@ -21,7 +21,8 @@ public final class APGWorkMacWhatsNew {
 
     /// Can show this window (resources filled)
     public static var canShow: Bool {
-        !APGWorkShared.featuresList.isEmpty
+        let empty = APGWorkGlobals.shared.featuresList.isEmpty
+        return !empty
     }
 
     // MARK: - Static Functions
@@ -42,9 +43,9 @@ public final class APGWorkMacWhatsNew {
 
 /// A scrollable list of feature items with symbol, title, and description.
 public struct APGWorkMacFeatureList: View {
-    public let listFeatureItem: [APGWorkFeaturesItem]
+    public let listFeatureItem: [APGWorkFeatureItem]
 
-    public init(listFeatureItem: [APGWorkFeaturesItem]) {
+    public init(listFeatureItem: [APGWorkFeatureItem]) {
         self.listFeatureItem = listFeatureItem
     }
 
@@ -53,7 +54,7 @@ public struct APGWorkMacFeatureList: View {
             ForEach(Array(listFeatureItem.enumerated()), id: \.offset) { _, item in
                 HStack(alignment: .top, spacing: 20) {
                     if !item.symbolName.isEmpty {
-                        if let customColor = APGWorkShared.workUIColor {
+                        if let customColor = APGWorkGlobals.shared.workUIColor {
                             Image(systemName: item.symbolName)
                                 .resizable()
                                 .scaledToFit()
@@ -95,15 +96,15 @@ private struct APGWorkMacWhatsNewView: View {
 
             ScrollView {
                 VStack(spacing: 16) {
-                    APGWorkMacFeatureList(listFeatureItem: APGWorkShared.featuresList)
+                    APGWorkMacFeatureList(listFeatureItem: APGWorkGlobals.shared.featuresList)
 
-                    if !APGWorkShared.featuresListLink.isEmpty {
-                        if let customColor = APGWorkShared.workUIColor {
+                    if !APGWorkGlobals.shared.featuresListLink.isEmpty {
+                        if let customColor = APGWorkGlobals.shared.workUIColor {
                             Text(APGWorkShared.completeFeatureList)
                                 .font(.title2)
                                 .foregroundColor(customColor)
                                 .onTapGesture {
-                                    APGWorkMacApp.openRef(APGWorkShared.featuresListLink)
+                                    APGWorkMacApp.openRef(APGWorkGlobals.shared.featuresListLink)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 8)
@@ -113,7 +114,7 @@ private struct APGWorkMacWhatsNewView: View {
                                 .font(.title2)
                                 .foregroundColor(.blue)
                                 .onTapGesture {
-                                    APGWorkMacApp.openRef(APGWorkShared.featuresListLink)
+                                    APGWorkMacApp.openRef(APGWorkGlobals.shared.featuresListLink)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 8)
@@ -133,7 +134,7 @@ private struct APGWorkMacWhatsNewView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .keyboardShortcut(.defaultAction)
-                .tint(APGWorkShared.workUIColor ?? .accentColor)
+                .tint(APGWorkGlobals.shared.workUIColor ?? .accentColor)
                 Spacer()    // <— add this
             }
             .padding()
