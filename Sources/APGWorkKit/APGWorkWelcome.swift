@@ -92,8 +92,8 @@ private struct APGWorkMacWelcomeView: View {
 
             HStack {
                 Spacer()
-                APGLargeButton(title: "Continue", isDefault: true) {
-                    // later
+                APGWidgetLargeButton(title: APGWorkShared.continueString, isDefault: true) {
+                    APGWidgetWindow.CloseWindow(ident: APGWorkShared.identifierWelcomeWindow)
                 }
                 Spacer()
             }

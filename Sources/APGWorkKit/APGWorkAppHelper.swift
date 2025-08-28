@@ -105,7 +105,7 @@ public class APGWorkAppHelper {
             APGIntentInfo(token: APGIntent.faq,
                           name: APGWorkShared.faq,
                           symbolName: APGWorkShared.sfFAQToken),
-            APGIntentInfo(token: APGIntent.features,
+            APGIntentInfo(token: APGIntent.getStarted,
                           name: APGWorkShared.getStarted,
                           symbolName: APGWorkShared.sfGetStartedToken)
         ])
@@ -135,10 +135,12 @@ public class APGWorkAppHelper {
             APGWorkWhatsNew.show()
         }
 
-        APGIntentActionList.sharedApp.addAction(token: APGIntent.features) { _ in
+        APGIntentActionList.sharedApp.addAction(token: APGIntent.getStarted) { _ in
+            APGWorkGetStarted.show()
          }
 
         APGIntentActionList.sharedApp.addAction(token: APGIntent.faq) { _ in
+           // later APGWorkFAQ.show()
         }
 
         APGIntentActionList.sharedApp.addAction(token: APGIntent.welcome) { _ in
