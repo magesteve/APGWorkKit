@@ -68,7 +68,7 @@ private struct APGWorkMacWelcomeView: View {
         VStack(spacing: 0) {
             Spacer().frame(height: 40)
 
-            Text("Welcome to APPNAME")
+            Text(APGWorkShared.welcomeToAppName)
                 .font(.system(size: 36))
                 .padding(.bottom, 8)
 

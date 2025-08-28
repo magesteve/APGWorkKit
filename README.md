@@ -1,3 +1,3 @@
 # APGWorkKit ReadMe
 
-Repository https://github.com/magesteve/APGWorkKit with current version **0.5.4**
+Repository https://github.com/magesteve/APGWorkKit with current version **0.5.7**

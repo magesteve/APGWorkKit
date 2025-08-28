@@ -47,14 +47,14 @@ public class APGWorkAppHelper {
     /// What's New features
     public var whatsNewFeaturesList: [APGWorkFeatureItem] = []
 
-    /// What's new Optional external "Complete Feature List" reference (URL/file)
-    public var whatsNewFeaturesListLink: String = ""
+    /// What's new Optional external 'New Feature List' reference (URL/file)
+    public var whatsNewFeaturesListLink: String = String()
         
     /// Get Started features
     public var getStartedFeaturesList: [APGWorkFeatureItem] = []
 
-    /// Get Started Optional external "Complete Feature List" reference (URL/file)
-    public var getStartedFeaturesListLink: String = ""
+    /// Get Started Optional external 'Complete Feature List' reference (URL/file)
+    public var getStartedFeaturesListLink: String = String()
         
     /// Additional about menu item Token
     public var aboutTokens: [String]?

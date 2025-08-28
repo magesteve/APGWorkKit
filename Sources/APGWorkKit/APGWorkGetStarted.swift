@@ -47,7 +47,7 @@ private struct APGWorkMacGetStartedView: View {
         VStack(spacing: 0) {
             Spacer().frame(height: 30)
 
-            Text("Get Started")
+            Text(APGWorkShared.getStarted)
                 .font(.system(size: 36))
                 .padding(.bottom, 4)
 
@@ -87,12 +87,12 @@ private struct APGWorkMacGetStartedView: View {
             }
 
             HStack(spacing: 40) {
-                APGWidgetLargeButton(title: "Open Documents") {
+                APGWidgetLargeButton(title: APGWorkShared.openDocuments) {
                     NSDocumentController.shared.openDocument(nil)
                     APGWidgetWindow.CloseWindow(ident: APGWorkShared.identifierGetStartedWindow)
                 }
 
-                APGWidgetLargeButton(title:"Create Document", isDefault: true) {
+                APGWidgetLargeButton(title:APGWorkShared.newDocument, isDefault: true) {
                     NSDocumentController.shared.newDocument(nil)
                     APGWidgetWindow.CloseWindow(ident: APGWorkShared.identifierGetStartedWindow)
                 }
