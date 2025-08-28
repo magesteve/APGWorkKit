@@ -32,7 +32,7 @@ public final class APGWorkGetStarted {
             size: CGSize(width: 900, height: 600)
         ) {
             APGWorkMacGetStartedView(
-                features: APGWorkAppHelper.shared.featuresList 
+                features: APGWorkAppHelper.shared.getStartedFeaturesList
             )
         }
     }
@@ -58,15 +58,15 @@ private struct APGWorkMacGetStartedView: View {
 
             ScrollView {
                 VStack(spacing: 16) {
-                    APGWorkMacFeatureList(listFeatureItem: APGWorkAppHelper.shared.featuresList)
+                    APGWorkMacFeatureList(listFeatureItem: APGWorkAppHelper.shared.getStartedFeaturesList)
 
-                    if !APGWorkAppHelper.shared.featuresListLink.isEmpty {
+                    if !APGWorkAppHelper.shared.getStartedFeaturesListLink.isEmpty {
                         if let customColor = APGWorkAppHelper.workUIColor {
                             Text(APGWorkShared.completeFeatureList)
                                 .font(.title2)
                                 .foregroundColor(customColor)
                                 .onTapGesture {
-                                    APGCantrip.openRef(APGWorkAppHelper.shared.featuresListLink)
+                                    APGCantrip.openRef(APGWorkAppHelper.shared.getStartedFeaturesListLink)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 8)
@@ -76,7 +76,7 @@ private struct APGWorkMacGetStartedView: View {
                                 .font(.title2)
                                 .foregroundColor(.blue)
                                 .onTapGesture {
-                                    APGCantrip.openRef(APGWorkAppHelper.shared.featuresListLink)
+                                    APGCantrip.openRef(APGWorkAppHelper.shared.getStartedFeaturesListLink)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 8)

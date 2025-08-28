@@ -45,10 +45,16 @@ public class APGWorkAppHelper {
     public var aboutLicensesLink = String()
 
     /// What's New features
-    public var featuresList: [APGWorkFeatureItem] = []
+    public var whatsNewFeaturesList: [APGWorkFeatureItem] = []
 
-    /// Optional external "Complete Feature List" reference (URL/file)
-    public var featuresListLink: String = ""
+    /// What's new Optional external "Complete Feature List" reference (URL/file)
+    public var whatsNewFeaturesListLink: String = ""
+        
+    /// Get Started features
+    public var getStartedFeaturesList: [APGWorkFeatureItem] = []
+
+    /// Get Started Optional external "Complete Feature List" reference (URL/file)
+    public var getStartedFeaturesListLink: String = ""
         
     /// Additional about menu item Token
     public var aboutTokens: [String]?
@@ -107,7 +113,13 @@ public class APGWorkAppHelper {
                           symbolName: APGWorkShared.sfFAQToken),
             APGIntentInfo(token: APGIntent.getStarted,
                           name: APGWorkShared.getStarted,
-                          symbolName: APGWorkShared.sfGetStartedToken)
+                          symbolName: APGWorkShared.sfGetStartedToken),
+            APGIntentInfo(token: APGIntent.settings,
+                          name: APGWorkShared.settings,
+                          symbolName: APGWorkShared.sfSettingsToken),
+            APGIntentInfo(token: APGIntent.promos,
+                          name: APGWorkShared.promos,
+                          symbolName: APGWorkShared.sfPromosToken)
         ])
     }
     

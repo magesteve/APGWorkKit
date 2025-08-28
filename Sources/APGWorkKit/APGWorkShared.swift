@@ -26,6 +26,8 @@ public enum APGWorkShared {
     public static let whatsNew: String = "What's New"
     public static let continueString: String = "Continue"
     public static let welcome: String = "Welcome"
+    public static let settings: String = "Settings"
+    public static let promos: String = "promos"
     public static let faq: String = "FAQ"
     public static let getStarted: String = "Get Started"
     public static let version: String = "Version"
@@ -50,6 +52,8 @@ public enum APGWorkShared {
     public static let sfWelcomeToken = "hand.wave"
     public static let sfFAQToken    = "questionmark.bubble"
     public static let sfGetStartedToken = "hand.wave"
+    public static let sfSettingsToken = "hand.wave"
+    public static let sfPromosToken = "hand.wave"
 
     // MARK: Bundle-derived strings
 

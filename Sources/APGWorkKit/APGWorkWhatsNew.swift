@@ -30,7 +30,7 @@ public final class APGWorkWhatsNew {
 
     /// Can show this window (resources filled)
     public static var canShow: Bool {
-        let empty = APGWorkAppHelper.shared.featuresList.isEmpty
+        let empty = APGWorkAppHelper.shared.whatsNewFeaturesList.isEmpty
         return !empty
     }
 
@@ -68,15 +68,15 @@ private struct APGWorkMacWhatsNewView: View {
 
             ScrollView {
                 VStack(spacing: 16) {
-                    APGWorkMacFeatureList(listFeatureItem: APGWorkAppHelper.shared.featuresList)
+                    APGWorkMacFeatureList(listFeatureItem: APGWorkAppHelper.shared.whatsNewFeaturesList)
 
-                    if !APGWorkAppHelper.shared.featuresListLink.isEmpty {
+                    if !APGWorkAppHelper.shared.whatsNewFeaturesListLink.isEmpty {
                         if let customColor = APGWorkAppHelper.workUIColor {
                             Text(APGWorkShared.completeFeatureList)
                                 .font(.title2)
                                 .foregroundColor(customColor)
                                 .onTapGesture {
-                                    APGCantrip.openRef(APGWorkAppHelper.shared.featuresListLink)
+                                    APGCantrip.openRef(APGWorkAppHelper.shared.whatsNewFeaturesListLink)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 8)
@@ -86,7 +86,7 @@ private struct APGWorkMacWhatsNewView: View {
                                 .font(.title2)
                                 .foregroundColor(.blue)
                                 .onTapGesture {
-                                    APGCantrip.openRef(APGWorkAppHelper.shared.featuresListLink)
+                                    APGCantrip.openRef(APGWorkAppHelper.shared.whatsNewFeaturesListLink)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 8)

@@ -12,6 +12,7 @@
 import Foundation
 import APGCantripKit
 import APGWidgetKit
+import APGIntentKit
 
 #if canImport(AppKit) && canImport(SwiftUI)
 
@@ -94,6 +95,7 @@ private struct APGWorkMacWelcomeView: View {
                 Spacer()
                 APGWidgetLargeButton(title: APGWorkShared.continueString, isDefault: true) {
                     APGWidgetWindow.CloseWindow(ident: APGWorkShared.identifierWelcomeWindow)
+                    APGWorkGetStarted.show()
                 }
                 Spacer()
             }
