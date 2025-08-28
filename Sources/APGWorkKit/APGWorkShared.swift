@@ -7,60 +7,10 @@
 //  Static helpers + a MainActor-isolated state container for Work UI.
 //
 
+// MARK: - Import
+
 import Foundation
-import SwiftUI
 import APGCantripKit
-
-// MARK: - Class
-
-/// UI state and links used by Work UI. Main-thread only.
-@MainActor
-public final class APGWorkGlobals {
-    // MARK: - Static Variables
-    ///
-    /// Singleton reference
-    public static let shared = APGWorkGlobals()
-
-    // MARK: - Public Variables
-
-    /// Color used in Work UI (optional theme override)
-    public var workUIColor: Color?
-
-    /// About Symbol name to show in About
-    public var aboutSymbolName: String = APGWorkShared.sfAboutLogo
-
-    /// About Acknowledgments external reference (URL string or file path)
-    public var aboutAcknowledgmentsLink: String = ""
-
-    /// About Licenses external reference (URL string or file path)
-    public var aboutLicensesLink: String = ""
-
-    /// What's New features
-    public var featuresList: [APGWorkFeatureItem] = []
-
-    /// Optional external "Complete Feature List" reference (URL/file)
-    public var featuresListLink: String = ""
-        
-    /// Additional about menu item Token
-    public var aboutTokens: [String]?
-
-    /// Additional help menu item Token
-    public var helpTokens: [String]?
-
-    // MARK: - Init
-    
-    /// do nothing init
-    public init() {}
-    
-    // MARK: - Public Functions
-
-    /// Add additional items to premade intents
-    public func addAdditionalMenuIntents(about: [String]? = nil,
-                                         help: [String]? = nil) {
-        self.aboutTokens = about
-        self.helpTokens = help
-    }
-}
 
 // MARK: - Enum
 
@@ -69,25 +19,18 @@ public enum APGWorkShared {
 
     // MARK: Human Readable Localizations
 
-    public static var ok: String { "OK" }
-    public static var inString: String { "in" }
-    public static var space: String { " " }
-    public static var about: String { "About" }
-    public static var whatsNew: String { "What's New" }
-    public static var continueString: String { "Continue" }
-    public static var welcome: String { "Welcome" }
-    public static var faq: String { "FAQ" }
-    public static var version: String { "Version" }
-    public static var acknowledgments: String { "Acknowledgments" }
-    public static var completeFeatureList: String { "Complete Feature List" }
-    public static var licenses: String { "Licenses" }
-
-    // MARK: Tokens
-
-    public static let tokenWhatsNew = "whatsnew"
-    public static let tokenAbout = "about"
-    public static let tokenFAQ = "faq"
-    public static let tokenWelcome = "welcome"
+    public static let ok: String = "OK"
+    public static let inString: String = "in"
+    public static let space: String = " "
+    public static let about: String = "About"
+    public static let whatsNew: String = "What's New"
+    public static let continueString: String = "Continue"
+    public static let welcome: String = "Welcome"
+    public static let faq: String = "FAQ"
+    public static let version: String = "Version"
+    public static let acknowledgments: String = "Acknowledgments"
+    public static let completeFeatureList: String = "Complete Feature List"
+    public static let licenses: String = "Licenses"
 
     // MARK: Identifiers
 

@@ -1,5 +1,5 @@
 //
-//  APGWorkMacWhatsNew.swift
+//  APGWorkWhatsNew.swift
 //  APGWorkKit
 //
 //  Created by Steve Sheets on 8/18/25.
@@ -7,24 +7,30 @@
 //  Custom iWork-style What's New box
 //
 
+// MARK: Imports
+
+import Foundation
 import APGCantripKit
 import APGWidgetKit
 
-#if os(macOS)
-import Cocoa
+#if canImport(AppKit) && canImport(SwiftUI)
+
+import AppKit
 import SwiftUI
+
+#endif
 
 // MARK: - Class
 
 /// Static manager for the What's New window.
 @MainActor
-public final class APGWorkMacWhatsNew {
+public final class APGWorkWhatsNew {
     
     // MARK: - Static Computed Properties
 
     /// Can show this window (resources filled)
     public static var canShow: Bool {
-        let empty = APGWorkGlobals.shared.featuresList.isEmpty
+        let empty = APGWorkAppHelper.shared.featuresList.isEmpty
         return !empty
     }
 
@@ -32,6 +38,9 @@ public final class APGWorkMacWhatsNew {
 
     /// Show the What's New window using filled values.
     public static func show() {
+
+#if canImport(AppKit) && canImport(SwiftUI)
+
         APGWidgetWindow.makeWindow(
             title: String(),
             ident: APGWorkShared.identifierWhatsNewWindow,
@@ -39,55 +48,15 @@ public final class APGWorkMacWhatsNew {
         ) {
             APGWorkMacWhatsNewView()
         }
+        
+#endif
+        
     }
 }
+
+#if canImport(AppKit) && canImport(SwiftUI)
 
 // MARK: - SwiftUI Views
-
-/// A scrollable list of feature items with symbol, title, and description.
-public struct APGWorkMacFeatureList: View {
-    public let listFeatureItem: [APGWorkFeatureItem]
-
-    public init(listFeatureItem: [APGWorkFeatureItem]) {
-        self.listFeatureItem = listFeatureItem
-    }
-
-    public var body: some View {
-        LazyVStack(alignment: .leading, spacing: 28) {
-            ForEach(Array(listFeatureItem.enumerated()), id: \.offset) { _, item in
-                HStack(alignment: .top, spacing: 20) {
-                    if !item.symbolName.isEmpty {
-                        if let customColor = APGWorkGlobals.shared.workUIColor {
-                            Image(systemName: item.symbolName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 45, height: 45)
-                                .symbolRenderingMode(.monochrome)
-                                .foregroundStyle(customColor)
-                        } else {
-                            Image(systemName: item.symbolName)
-                                .renderingMode(.original)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 45, height: 45)
-                        }
-                    }
-
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(item.title)
-                            .font(.title2).bold()
-                        Text(item.description)
-                            .font(.system(size: 18))
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading, 160)
-            }
-        }
-        .padding(.top, 32)
-    }
-}
 
 /// What's New window content view that reads data shared
 private struct APGWorkMacWhatsNewView: View {
@@ -99,15 +68,15 @@ private struct APGWorkMacWhatsNewView: View {
 
             ScrollView {
                 VStack(spacing: 16) {
-                    APGWorkMacFeatureList(listFeatureItem: APGWorkGlobals.shared.featuresList)
+                    APGWorkMacFeatureList(listFeatureItem: APGWorkAppHelper.shared.featuresList)
 
-                    if !APGWorkGlobals.shared.featuresListLink.isEmpty {
-                        if let customColor = APGWorkGlobals.shared.workUIColor {
+                    if !APGWorkAppHelper.shared.featuresListLink.isEmpty {
+                        if let customColor = APGWorkAppHelper.workUIColor {
                             Text(APGWorkShared.completeFeatureList)
                                 .font(.title2)
                                 .foregroundColor(customColor)
                                 .onTapGesture {
-                                    APGCantrip.openRef(APGWorkGlobals.shared.featuresListLink)
+                                    APGCantrip.openRef(APGWorkAppHelper.shared.featuresListLink)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 8)
@@ -117,7 +86,7 @@ private struct APGWorkMacWhatsNewView: View {
                                 .font(.title2)
                                 .foregroundColor(.blue)
                                 .onTapGesture {
-                                    APGCantrip.openRef(APGWorkGlobals.shared.featuresListLink)
+                                    APGCantrip.openRef(APGWorkAppHelper.shared.featuresListLink)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 8)
@@ -137,8 +106,9 @@ private struct APGWorkMacWhatsNewView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .keyboardShortcut(.defaultAction)
-                .tint(APGWorkGlobals.shared.workUIColor ?? .accentColor)
-                Spacer()    // <— add this
+                .tint(APGWorkAppHelper.workUIColor ?? .accentColor)
+                
+                Spacer()
             }
             .padding()
             .frame(height: 60)

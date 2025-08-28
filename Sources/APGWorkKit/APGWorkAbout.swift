@@ -1,5 +1,5 @@
 //
-//  APGWorkMacAbout.swift.swift
+//  APGWorkAbout.swift.swift
 //  APGWorkKit
 //
 //  Created by Steve Sheets on 2025-08-17
@@ -8,23 +8,34 @@
 //  Custom iWork-style About box
 //
 
+
+// MARK: Imports
+
+import Foundation
 import APGCantripKit
 import APGWidgetKit
 
-#if os(macOS)
-import Cocoa
+#if canImport(AppKit) && canImport(SwiftUI)
+
+import AppKit
 import SwiftUI
+
+#endif
 
 // MARK: - Class
 
-/// Static manager for the About window..
+/// Static manager for the About window.
+///     Currently only support AppKit thru SwiftUI
 @MainActor
-public final class APGWorkMacAbout {
+public final class APGWorkAbout {
 
     // MARK: - Static Function
 
     /// Show the About window using filled values.
     public static func show() {
+        
+#if canImport(AppKit) && canImport(SwiftUI)
+        
         APGWidgetWindow.makeWindow(
             title: APGWorkShared.aboutAppName,
             ident: APGWorkShared.identifierAboutWindow,
@@ -32,12 +43,18 @@ public final class APGWorkMacAbout {
         ) {
             APGWorkMacAboutView()
         }
+
+#endif
+
     }
+
 }
+
+#if canImport(AppKit) && canImport(SwiftUI)
 
 // MARK: - SwiftUI View
 
-/// About window content view that reads data from APGWorkMacAbout shared
+/// About window content view that reads data from APGWork shared
 private struct APGWorkMacAboutView: View {
     
     var body: some View {
@@ -59,8 +76,8 @@ private struct APGWorkMacAboutView: View {
                     GeometryReader { geo in
                         VStack(alignment: .leading, spacing: 0) {
                             VStack(alignment: .leading, spacing: 6) {
-                                if !APGWorkGlobals.shared.aboutSymbolName.isEmpty {
-                                    if let nsImage = NSImage(systemSymbolName: APGWorkGlobals.shared.aboutSymbolName, accessibilityDescription: String()) {
+                                if !APGWorkAppHelper.shared.aboutSymbolName.isEmpty {
+                                    if let nsImage = NSImage(systemSymbolName: APGWorkAppHelper.shared.aboutSymbolName, accessibilityDescription: String()) {
                                         Image(nsImage: nsImage)
                                             .renderingMode(.original)
                                             .interpolation(.high)
@@ -75,7 +92,7 @@ private struct APGWorkMacAboutView: View {
                                     Text(appName)
                                         .font(.system(size: 22))
                                         .bold()
-                                        .padding(.top, APGWorkGlobals.shared.aboutSymbolName.isEmpty ? 0 : 8)
+                                        .padding(.top, APGWorkAppHelper.shared.aboutSymbolName.isEmpty ? 0 : 8)
                                 }
 
                                 Text(APGCantrip.appVersionString())
@@ -102,14 +119,14 @@ private struct APGWorkMacAboutView: View {
 
             HStack {
                 Spacer()
-                if !APGWorkGlobals.shared.aboutAcknowledgmentsLink.isEmpty {
+                if !APGWorkAppHelper.shared.aboutAcknowledgmentsLink.isEmpty {
                     Button(APGWorkShared.acknowledgments) {
-                        APGCantrip.openRef(APGWorkGlobals.shared.aboutAcknowledgmentsLink)
+                        APGCantrip.openRef(APGWorkAppHelper.shared.aboutAcknowledgmentsLink)
                     }
                 }
-                if !APGWorkGlobals.shared.aboutLicensesLink.isEmpty {
+                if !APGWorkAppHelper.shared.aboutLicensesLink.isEmpty {
                     Button(APGWorkShared.licenses) {
-                        APGCantrip.openRef(APGWorkGlobals.shared.aboutLicensesLink)
+                        APGCantrip.openRef(APGWorkAppHelper.shared.aboutLicensesLink)
                     }
                 }
             }

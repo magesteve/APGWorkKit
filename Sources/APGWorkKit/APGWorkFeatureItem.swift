@@ -8,7 +8,11 @@
 //  and supports Codable for export/import.
 //
 
+// MARK: - Import
+
 import Foundation
+
+// MARK: - Structure
 
 /// Represents a single feature item in the What's New or feature promotion UI.
 /// Includes title, description, optional image name, and full Codable/JSONAble support.
