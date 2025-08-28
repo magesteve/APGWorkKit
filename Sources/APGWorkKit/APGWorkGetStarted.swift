@@ -25,6 +25,7 @@ public final class APGWorkGetStarted {
 
     // MARK: - Show Window
 
+    /// Show the Get Started window using filled values.
     public static func show() {
         APGWidgetWindow.makeWindow(
             title: APGWorkShared.getStarted,

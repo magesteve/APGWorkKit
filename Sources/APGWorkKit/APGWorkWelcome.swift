@@ -33,15 +33,13 @@ import SwiftUI
 @MainActor
 public final class APGWorkWelcome {
 
-    // MARK: - Stored Data
-
-
     // MARK: - Init
 
     private init() {}
 
     // MARK: - Show Window
 
+    /// Show the Welcome window using filled values.
     public static func show() {
         APGWidgetWindow.makeWindow(
             title: APGWorkShared.welcome,

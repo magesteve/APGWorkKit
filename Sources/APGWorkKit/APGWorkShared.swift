@@ -28,7 +28,7 @@ public enum APGWorkShared {
     public static let continueString: String = "Continue"
     public static let welcome: String = "Welcome"
     public static let settings: String = "Settings"
-    public static let promos: String = "promos"
+    public static let promos: String = "Promotions"
     public static let faq: String = "FAQ"
     public static let getStarted: String = "Get Started"
     public static let newDocument: String = "New Document"
@@ -46,7 +46,9 @@ public enum APGWorkShared {
     public static let identifierWelcomeWindow = "APGWork-Welcome"
     public static let identifierFAQWindow = "APGWork-FAQ"
     public static let identifierGetStartedWindow = "APGWork-GetStarted"
-    
+    public static let identifierSettingsWindow = "APGWork-Settings"
+    public static let identifierPromosWindow = "APGWork-Promos"
+
     // MARK: SF Symbols
     
     public static let sfAboutLogo   = "apple.logo"

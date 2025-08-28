@@ -71,6 +71,12 @@ public class APGWorkAppHelper {
     /// Welcome List of Image names to display
     public var welcomeImageNames: [String] = []
 
+    /// FAQ Topic/Entries
+    public var faqTopics: [APGWorkFAQTopic] = []
+    
+    /// FAQ References
+    public var faqReferences: [APGWorkFAQReference] = []
+
     // MARK: - COmputed Var
     
     public static var workUIColor: Color? {
@@ -152,7 +158,7 @@ public class APGWorkAppHelper {
          }
 
         APGIntentActionList.sharedApp.addAction(token: APGIntent.faq) { _ in
-           // later APGWorkFAQ.show()
+           APGWorkFAQ.show()
         }
 
         APGIntentActionList.sharedApp.addAction(token: APGIntent.welcome) { _ in
