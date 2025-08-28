@@ -8,6 +8,7 @@
 //
 
 import APGCantripKit
+import APGWidgetKit
 
 #if os(macOS)
 import Cocoa
@@ -31,7 +32,7 @@ public final class APGWorkMacWhatsNew {
 
     /// Show the What's New window using filled values.
     public static func show() {
-        APGWindowTool.makeWindow(
+        APGWidgetWindow.makeWindow(
             title: String(),
             ident: APGWorkShared.identifierWhatsNewWindow,
             size: CGSize(width: 900, height: 600)
@@ -129,7 +130,7 @@ private struct APGWorkMacWhatsNewView: View {
             HStack {
                 Spacer()
                 Button {
-                    APGWindowTool.CloseWindow(ident: APGWorkShared.identifierWhatsNewWindow)
+                    APGWidgetWindow.CloseWindow(ident: APGWorkShared.identifierWhatsNewWindow)
                 } label: {
                     Text(APGWorkShared.continueString)
                         .frame(width: 200, height: 30)

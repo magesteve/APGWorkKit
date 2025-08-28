@@ -9,6 +9,7 @@
 //
 
 import APGCantripKit
+import APGWidgetKit
 
 #if os(macOS)
 import Cocoa
@@ -24,7 +25,7 @@ public final class APGWorkMacAbout {
 
     /// Show the About window using filled values.
     public static func show() {
-        APGWindowTool.makeWindow(
+        APGWidgetWindow.makeWindow(
             title: APGWorkShared.aboutAppName,
             ident: APGWorkShared.identifierAboutWindow,
             size: CGSize(width: 560, height: 320)

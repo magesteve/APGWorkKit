@@ -5,5 +5,5 @@
 public struct APGWork {
     
     /// Version information of package
-    public static let version = "0.4.2"
+    public static let version = "0.4.3"
 }
