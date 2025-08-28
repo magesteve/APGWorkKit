@@ -20,22 +20,61 @@ import SwiftUI
 
 // MARK: - Structure
 
+/// Single Quest & Answer for FAQ
 public struct APGWorkFAQEntry: Identifiable {
+    
+    /// Unique identifier
     public let id = UUID()
+ 
+    /// Question
     public let question: String
+    
+    /// Answer
     public let answer: String
+    
+    /// Public Init
+    public init(question: String, answer: String) {
+        self.question = question
+        self.answer = answer
+    }
 }
 
+/// List of Entry with topic title
 public struct APGWorkFAQTopic: Identifiable {
+
+    /// Unique identifier
     public let id = UUID()
+
+    /// Title of topic
     public let title: String
+
+    /// List of entries (Q & A)
     public var entries: [APGWorkFAQEntry]
+    
+    /// Public Init
+    public init(title: String, entries: [APGWorkFAQEntry]) {
+        self.title = title
+        self.entries = entries
+    }
 }
 
+/// Reference (doc or html) to display Title, and open Ref
 public struct APGWorkFAQReference: Identifiable {
+    
+    /// Unique identifier
     public let id = UUID()
+    
+    /// Title of Reference
     public let title: String
+    
+    /// Ref string (url or file name) of Reference
     public let ref: String
+    
+    /// Public Init
+    public init(title: String, ref: String) {
+        self.title = title
+        self.ref = ref
+    }
 }
 
 // MARK: - Class
