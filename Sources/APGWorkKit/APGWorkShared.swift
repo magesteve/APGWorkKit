@@ -27,6 +27,7 @@ public enum APGWorkShared {
     public static let continueString: String = "Continue"
     public static let welcome: String = "Welcome"
     public static let faq: String = "FAQ"
+    public static let getStarted: String = "Get Started"
     public static let version: String = "Version"
     public static let acknowledgments: String = "Acknowledgments"
     public static let completeFeatureList: String = "Complete Feature List"
@@ -34,18 +35,21 @@ public enum APGWorkShared {
 
     // MARK: Identifiers
 
-    public static let identifierAboutWindow   = "APGWork-About"
+    public static let identifierAboutWindow = "APGWork-About"
     public static let identifierWhatsNewWindow = "APGWork-WhatsNew"
     public static let identifierWelcomeWindow = "APGWork-Welcome"
-    public static let identifierFAQWindow     = "APGWork-FAQ"
+    public static let identifierFAQWindow = "APGWork-FAQ"
+    public static let identifierGetStartedWindow = "APGWork-GetStarted"
 
     // MARK: SF Symbols
 
     public static let sfAboutLogo   = "apple.logo"
+    
     public static let sfAboutToken  = "info.circle"
     public static let sfWhatsNewToken = "sparkles"
-    public static let sfFAQToken    = "questionmark.bubble"
     public static let sfWelcomeToken = "hand.wave"
+    public static let sfFAQToken    = "questionmark.bubble"
+    public static let sfGetStartedToken = "hand.wave"
 
     // MARK: Bundle-derived strings
 

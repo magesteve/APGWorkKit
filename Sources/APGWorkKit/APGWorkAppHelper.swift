@@ -56,6 +56,15 @@ public class APGWorkAppHelper {
     /// Additional help menu item Token
     public var helpTokens: [String]?
     
+    /// Welcome subtitle
+    public var welcomeSubTitle = String()
+
+    /// Welcome Agreement Reference
+    public var welcomeAgreementRef: String? = nil
+
+    /// Welcome List of Image names to display
+    public var welcomeImageNames: [String] = []
+
     // MARK: - COmputed Var
     
     public static var workUIColor: Color? {
@@ -88,7 +97,17 @@ public class APGWorkAppHelper {
                           symbolName: APGWorkShared.sfAboutToken),
             APGIntentInfo(token: APGIntent.whatsnew,
                           name: APGWorkShared.whatsNewAppName,
-                          symbolName: APGWorkShared.sfWhatsNewToken)
+                          symbolName: APGWorkShared.sfWhatsNewToken),
+
+            APGIntentInfo(token: APGIntent.welcome,
+                          name: APGWorkShared.welcome,
+                          symbolName: APGWorkShared.sfWelcomeToken),
+            APGIntentInfo(token: APGIntent.faq,
+                          name: APGWorkShared.faq,
+                          symbolName: APGWorkShared.sfFAQToken),
+            APGIntentInfo(token: APGIntent.features,
+                          name: APGWorkShared.getStarted,
+                          symbolName: APGWorkShared.sfGetStartedToken)
         ])
     }
     
@@ -114,6 +133,16 @@ public class APGWorkAppHelper {
 
         APGIntentActionList.sharedApp.addAction(token: APGIntent.whatsnew) { _ in
             APGWorkWhatsNew.show()
+        }
+
+        APGIntentActionList.sharedApp.addAction(token: APGIntent.features) { _ in
+         }
+
+        APGIntentActionList.sharedApp.addAction(token: APGIntent.faq) { _ in
+        }
+
+        APGIntentActionList.sharedApp.addAction(token: APGIntent.welcome) { _ in
+            APGWorkWelcome.show()
         }
     }
     

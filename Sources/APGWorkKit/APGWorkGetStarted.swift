@@ -1,10 +1,8 @@
 //
-//  APGWorkWhatsNew.swift
+//  APGWorkGetStarted.swift
 //  APGWorkKit
 //
-//  Created by Steve Sheets on 8/18/25.
-//
-//  Custom iWork-style What's New box
+//  Created by Steve Sheets on 8/27/25.
 //
 
 // MARK: Imports
@@ -15,56 +13,48 @@ import APGWidgetKit
 
 #if canImport(AppKit) && canImport(SwiftUI)
 
-import AppKit
 import SwiftUI
 
 #endif
 
 // MARK: - Class
 
-/// Static manager for the What's New window.
+/// Static manager for the Get Started window..
 @MainActor
-public final class APGWorkWhatsNew {
-    
-    // MARK: - Static Computed Properties
+public final class APGWorkGetStarted {
 
-    /// Can show this window (resources filled)
-    public static var canShow: Bool {
-        let empty = APGWorkAppHelper.shared.featuresList.isEmpty
-        return !empty
-    }
+    // MARK: - Show Window
 
-    // MARK: - Static Functions
-
-    /// Show the What's New window using filled values.
     public static func show() {
-
-#if canImport(AppKit) && canImport(SwiftUI)
-
         APGWidgetWindow.makeWindow(
-            title: APGWorkShared.whatsNew,
-            ident: APGWorkShared.identifierWhatsNewWindow,
+            title: APGWorkShared.getStarted,
+            ident: APGWorkShared.identifierGetStartedWindow,
             size: CGSize(width: 900, height: 600)
         ) {
-            APGWorkMacWhatsNewView()
+            APGWorkMacGetStartedView(
+                features: APGWorkAppHelper.shared.featuresList 
+            )
         }
-        
-#endif
-        
     }
 }
 
-#if canImport(AppKit) && canImport(SwiftUI)
+// MARK: - SwiftUI View
 
-// MARK: - SwiftUI Views
+private struct APGWorkMacGetStartedView: View {
+    let features: [APGWorkFeatureItem]
 
-/// What's New window content view that reads data shared
-private struct APGWorkMacWhatsNewView: View {
     var body: some View {
         VStack(spacing: 0) {
-            Text(APGWorkShared.whatsNewAppName)
-                .font(.system(size: 44))
-                .padding(.top, 24)
+            Spacer().frame(height: 30)
+
+            Text("Get Started")
+                .font(.system(size: 36))
+                .padding(.bottom, 4)
+
+            Rectangle()
+                .fill(Color.gray.opacity(0.3))
+                .frame(height: 1)
+                .padding(.horizontal, 100)
 
             ScrollView {
                 VStack(spacing: 16) {
@@ -96,27 +86,23 @@ private struct APGWorkMacWhatsNewView: View {
                 .padding(.horizontal)
             }
 
-            HStack {
-                Spacer()
-                Button {
-                    APGWidgetWindow.CloseWindow(ident: APGWorkShared.identifierWhatsNewWindow)
-                } label: {
-                    Text(APGWorkShared.continueString)
-                        .frame(width: 200, height: 30)
+            HStack(spacing: 40) {
+                APGLargeButton(title: "Open Documents") {
+                    NSDocumentController.shared.openDocument(nil)
+                    // dismi
                 }
-                .buttonStyle(.borderedProminent)
-                .keyboardShortcut(.defaultAction)
-                .tint(APGWorkAppHelper.workUIColor ?? .accentColor)
-                
-                Spacer()
+
+                APGLargeButton(title:"Create Document", isDefault: true) {
+                    NSDocumentController.shared.newDocument(nil)
+                    // dismi
+                }
             }
-            .padding()
+            .frame(maxWidth: .infinity)
+            .padding(.vertical)
             .frame(height: 60)
-            .background(Color(NSColor.windowBackgroundColor).opacity(0.95))
+            .background(Color(NSColor.windowBackgroundColor).opacity(0.9))
         }
         .frame(width: 900, height: 600)
         .background(Color.white)
     }
 }
-
-#endif
