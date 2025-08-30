@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "APGWorkKit",
     platforms: [
-        .macOS(.v12)
+        .macOS(.v14)
     ],
     products: [
         .library(

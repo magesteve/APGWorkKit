@@ -1,6 +1,6 @@
 //
 //  APGWorkWelcome.swift
-//  MacDocSpike
+//  APGWorkKit
 //
 //  Created by Steve Sheets on 8/19/25.
 //
@@ -13,11 +13,11 @@ import Foundation
 import APGCantripKit
 import APGWidgetKit
 import APGIntentKit
+import SwiftUI
 
-#if canImport(AppKit) && canImport(SwiftUI)
+#if canImport(AppKit)
 
 import AppKit
-import SwiftUI
 
 #endif
 

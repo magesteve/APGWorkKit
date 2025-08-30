@@ -1,6 +1,6 @@
 //
 //  APGWorkFAQ.swift
-//  MacDocSpike
+//  APGWorkKit
 //
 //  Created by Steve Sheets on 8/19/25.
 //
@@ -10,11 +10,11 @@
 import Foundation
 import APGCantripKit
 import APGWidgetKit
+import SwiftUI
 
-#if canImport(AppKit) && canImport(SwiftUI)
+#if canImport(AppKit)
 
 import AppKit
-import SwiftUI
 
 #endif
 
@@ -92,7 +92,7 @@ public final class APGWorkFAQ {
     /// Show the FAQ window using filled values.
     public static func show() {
         APGWidgetWindow.makeWindow(
-            title: APGWorkShared.faq,
+            title: APGWorkShared.faqForAppName,
             ident: APGWorkShared.identifierFAQWindow,
             size: CGSize(width: 500, height: 600)
         ) {

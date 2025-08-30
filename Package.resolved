@@ -1,5 +1,5 @@
 {
-  "originHash" : "3624576a1bc964434226e1ef8c5929ea7ae161ba1c2c3cfc481b1433c78a3d55",
+  "originHash" : "df3da19ed97fee4043d9deb3b05a1482e12f8d013e7d72cea63f5bf4fbef7077",
   "pins" : [
     {
       "identity" : "apgcantripkit",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/magesteve/APGIntentKit.git",
       "state" : {
-        "revision" : "46ada54bfd334fda54d14f492af1f1fc9c7c865d",
-        "version" : "0.5.1"
+        "revision" : "d53139af9ac036e7d97b189fbc0e00be9db49925",
+        "version" : "0.5.3"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/magesteve/APGWidgetKit.git",
       "state" : {
-        "revision" : "3bf93114cd0174022652cc15bd6714f2c1881fe0",
-        "version" : "0.1.1"
+        "revision" : "2f70108bbf624de7b68f755ffaa6aeba83c4b1c9",
+        "version" : "0.1.3"
       }
     }
   ],

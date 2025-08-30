@@ -2,9 +2,9 @@
 // https://docs.swift.org/swift-book
 
 /// Abstract Struct for Package Information
-public struct APGWork {
+public class APGWork {
     
     /// Version information of package
-    public static let version = "0.5.9"
+    public static let version = "0.5.10"
     
 }

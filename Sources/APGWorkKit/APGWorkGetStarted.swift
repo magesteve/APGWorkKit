@@ -10,12 +10,7 @@
 import Foundation
 import APGCantripKit
 import APGWidgetKit
-
-#if canImport(AppKit) && canImport(SwiftUI)
-
 import SwiftUI
-
-#endif
 
 // MARK: - Class
 

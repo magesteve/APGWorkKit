@@ -22,6 +22,7 @@ public enum APGWorkShared {
     public static let ok: String = "OK"
     public static let inString: String = "in"
     public static let toString: String = "to"
+    public static let forString: String = "forr"
     public static let space: String = " "
     public static let about: String = "About"
     public static let whatsNew: String = "What's New"
@@ -29,6 +30,10 @@ public enum APGWorkShared {
     public static let welcome: String = "Welcome"
     public static let settings: String = "Settings"
     public static let promos: String = "Promotions"
+    public static let soundSettings: String = "Sound Settings"
+    public static let sound: String = "Sound"
+    public static let debug: String = "Debug"
+    public static let debugSettings: String = "Debug Settings"
     public static let faq: String = "FAQ"
     public static let getStarted: String = "Get Started"
     public static let newDocument: String = "New Document"
@@ -88,5 +93,14 @@ public enum APGWorkShared {
         guard name.isEmpty else { return welcome }
         
         return welcome + space + toString + space + name
+    }
+    
+    /// Title for FAQ window.
+    public static var faqForAppName: String {
+        let name = APGCantrip.appName()
+
+        guard name.isEmpty else { return faq }
+        
+        return faq + space + forString + space + name
     }
 }

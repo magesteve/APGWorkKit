@@ -12,12 +12,7 @@
 import Foundation
 import APGIntentKit
 import APGCantripKit
-
-#if canImport(SwiftUI)
-
 import SwiftUI
-
-#endif
 
 // MARK: - Class
 
@@ -77,7 +72,7 @@ public class APGWorkAppHelper {
     /// FAQ References
     public var faqReferences: [APGWorkFAQReference] = []
 
-    // MARK: - COmputed Var
+    // MARK: - Computed Var
     
     public static var workUIColor: Color? {
         guard let rgb = APGWorkAppHelper.shared.workRGB else { return nil }
@@ -85,7 +80,11 @@ public class APGWorkAppHelper {
         return rgb.swiftUIColor
     }
 
-
+    /// Standard background color for banner areas (e.g., toolbar rows).
+    public static var backgroundBannerColor: Color {
+        Color(APGCantripColor.windowBackgroundColor).opacity(0.95)
+    }
+    
     // MARK: - Init
     
     /// do nothing init
@@ -171,3 +170,15 @@ public class APGWorkAppHelper {
     }
     
 }
+
+// MARK: - Extension
+
+extension View {
+    
+    /// Set VIew Background color to Banner Color
+    func APGWorkBackgroundBannerColor() -> some View {
+        self.background(APGWorkAppHelper.backgroundBannerColor)
+    }
+    
+}
+

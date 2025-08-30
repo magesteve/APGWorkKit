@@ -14,11 +14,11 @@
 import Foundation
 import APGCantripKit
 import APGWidgetKit
+import SwiftUI
 
-#if canImport(AppKit) && canImport(SwiftUI)
+#if canImport(AppKit)
 
 import AppKit
-import SwiftUI
 
 #endif
 
@@ -34,7 +34,7 @@ public final class APGWorkAbout {
     /// Show the About window using filled values.
     public static func show() {
         
-#if canImport(AppKit) && canImport(SwiftUI)
+#if canImport(AppKit)
         
         APGWidgetWindow.makeWindow(
             title: APGWorkShared.aboutAppName,
@@ -50,7 +50,7 @@ public final class APGWorkAbout {
 
 }
 
-#if canImport(AppKit) && canImport(SwiftUI)
+#if canImport(AppKit)
 
 // MARK: - SwiftUI View
 

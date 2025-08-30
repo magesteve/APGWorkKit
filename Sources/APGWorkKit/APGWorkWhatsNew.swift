@@ -10,13 +10,13 @@
 // MARK: Imports
 
 import Foundation
+import SwiftUI
 import APGCantripKit
 import APGWidgetKit
 
-#if canImport(AppKit) && canImport(SwiftUI)
+#if canImport(AppKit)
 
 import AppKit
-import SwiftUI
 
 #endif
 
@@ -39,7 +39,7 @@ public final class APGWorkWhatsNew {
     /// Show the What's New window using filled values.
     public static func show() {
 
-#if canImport(AppKit) && canImport(SwiftUI)
+#if canImport(AppKit)
 
         APGWidgetWindow.makeWindow(
             title: APGWorkShared.whatsNew,
@@ -54,7 +54,7 @@ public final class APGWorkWhatsNew {
     }
 }
 
-#if canImport(AppKit) && canImport(SwiftUI)
+#if canImport(AppKit)
 
 // MARK: - SwiftUI Views
 

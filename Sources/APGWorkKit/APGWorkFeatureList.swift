@@ -10,9 +10,6 @@
 // MARK: - Import
 
 import Foundation
-
-#if canImport(SwiftUI)
-
 import SwiftUI
 
 // MARK: - SwiftUI Views
@@ -62,4 +59,3 @@ public struct APGWorkMacFeatureList: View {
     }
 }
 
-#endif
