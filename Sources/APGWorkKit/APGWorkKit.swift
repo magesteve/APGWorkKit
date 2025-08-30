@@ -5,6 +5,6 @@
 public class APGWork {
     
     /// Version information of package
-    public static let version = "0.5.11"
+    public static let version = "0.5.12"
     
 }

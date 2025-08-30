@@ -155,9 +155,15 @@ public class APGWorkAppHelper {
         APGIntentActionList.sharedApp.addAction(token: APGIntent.about) { _ in
             APGWorkAbout.show()
         }
+        
+        APGIntentActionList.sharedApp.addAction(token: APGIntent.settings) { _ in
+            APGWorkSettings.show()
+        }
+        
         APGIntentActionList.sharedApp.addAction(token: APGIntent.promos) { _ in
             // LATER APGWorkPromos.show()
         }
+        
         APGIntentActionList.sharedApp.addAction(token: APGIntent.whatsnew) { _ in
             APGWorkWhatsNew.show()
         }
