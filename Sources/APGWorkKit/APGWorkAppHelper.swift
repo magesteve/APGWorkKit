@@ -71,6 +71,9 @@ public class APGWorkAppHelper {
     
     /// FAQ References
     public var faqReferences: [APGWorkFAQReference] = []
+    
+    /// Promos title
+    public var promosTitle = String()
 
     // MARK: - Computed Var
     
@@ -130,24 +133,31 @@ public class APGWorkAppHelper {
     
     /// Setup App stuff
     public static func appPrepare() {
-        var listTokens: [String] = []
-        
-        listTokens = [APGIntent.about]
+        var someAbout = [APGIntent.about]
+        if !APGWorkAppHelper.shared.promosTitle.isEmpty {
+            someAbout.append(contentsOf: [APGIntent.promos])
+        }
         if let addList = APGWorkAppHelper.shared.aboutTokens {
-            listTokens.append(contentsOf: addList)
+            someAbout.append(contentsOf: addList)
         }
-        APGIntentMacTools.addAppMenuIntents(about: listTokens)
+        var someSettings: [String]?
+        if !APGWorkSettings.listControlPanels.isEmpty {
+            someSettings = [APGIntent.settings]
+        }
+        APGIntentMacTools.addAppMenuIntents(about: someAbout, settings: someSettings)
 
-        listTokens = [String(), APGIntent.whatsnew]
+        var someHelp: [String] = [String(), APGIntent.whatsnew]
         if let addList = APGWorkAppHelper.shared.helpTokens {
-            listTokens.append(contentsOf: addList)
+            someHelp.append(contentsOf: addList)
         }
-        APGIntentMacTools.addHelpMenuIntents(help: listTokens)
+        APGIntentMacTools.addHelpMenuIntents(help: someHelp)
         
         APGIntentActionList.sharedApp.addAction(token: APGIntent.about) { _ in
             APGWorkAbout.show()
         }
-
+        APGIntentActionList.sharedApp.addAction(token: APGIntent.promos) { _ in
+            // LATER APGWorkPromos.show()
+        }
         APGIntentActionList.sharedApp.addAction(token: APGIntent.whatsnew) { _ in
             APGWorkWhatsNew.show()
         }

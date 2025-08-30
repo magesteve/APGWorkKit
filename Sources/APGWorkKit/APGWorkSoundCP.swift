@@ -38,10 +38,12 @@ open class APGWorkSoundCP: APGWorkControlPanel {
 
                 HStack {
                     Text("Sound Level")
+
                     Slider(value: Binding(
                         get: { Double(self.soundManager.soundLevel) },
-                        set: { self.soundManager.soundLevel = Int($0) }
+                        set: { self.soundManager.setSoundLevel(Int($0)) }
                     ), in: 1...10, step: 1)
+
                     Text("\(soundManager.soundLevel)")
                         .frame(width: 30, alignment: .trailing)
                 }

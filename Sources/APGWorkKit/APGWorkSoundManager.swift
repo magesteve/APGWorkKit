@@ -9,11 +9,11 @@ import Foundation
 import AVFoundation
 import SwiftUI
 import Combine
-
 import AppKit
 
 @MainActor
 public final class APGWorkSoundManager: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
+    
     // MARK: - Shared Instance
 
     public static let shared = APGWorkSoundManager()
@@ -24,12 +24,7 @@ public final class APGWorkSoundManager: NSObject, ObservableObject, AVSpeechSynt
         didSet { saveSettings() }
     }
 
-    @Published public var soundLevel: Int = 5 {
-        didSet {
-            soundLevel = max(1, min(soundLevel, 10))
-            saveSettings()
-        }
-    }
+    @Published public private(set) var soundLevel: Int = 5
 
     @Published public private(set) var isSpeaking: Bool = false
 
@@ -64,6 +59,14 @@ public final class APGWorkSoundManager: NSObject, ObservableObject, AVSpeechSynt
 
     public var isEnabled: Bool {
         !isMuted && soundLevel > 0
+    }
+
+    public func setSoundLevel(_ newValue: Int) {
+        let clamped = max(1, min(newValue, 10))
+        if soundLevel != clamped {
+            soundLevel = clamped
+            saveSettings()
+        }
     }
 
     public func speakText(_ text: String) {
@@ -104,8 +107,8 @@ public final class APGWorkSoundManager: NSObject, ObservableObject, AVSpeechSynt
 
     private func loadSettings() {
         isMuted = UserDefaults.standard.bool(forKey: "APGWorkSoundManager.muted")
-        soundLevel = UserDefaults.standard.integer(forKey: "APGWorkSoundManager.soundLevel")
-        if soundLevel == 0 { soundLevel = 5 }
+        let saved = UserDefaults.standard.integer(forKey: "APGWorkSoundManager.soundLevel")
+        soundLevel = max(1, min(saved == 0 ? 5 : saved, 10))
     }
 }
 
