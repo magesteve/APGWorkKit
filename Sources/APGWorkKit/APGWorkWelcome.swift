@@ -47,9 +47,9 @@ public final class APGWorkWelcome {
             size: CGSize(width: 900, height: 600)
         ) {
             APGWorkMacWelcomeView(
-                subTitle: APGWorkAppHelper.shared.welcomeSubTitle,
-                agreementRef: APGWorkAppHelper.shared.welcomeAgreementRef,
-                imageNames: APGWorkAppHelper.shared.welcomeImageNames,
+                subTitle: APGWorkAppSpecs.shared.welcomeSubTitle ?? String(),
+                agreementRef: APGWorkAppSpecs.shared.welcomeAgreementRef,
+                imageNames: APGWorkAppSpecs.shared.welcomeImageNames ?? [],
             )
         }
     }

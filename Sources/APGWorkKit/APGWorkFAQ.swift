@@ -97,8 +97,8 @@ public final class APGWorkFAQ {
             size: CGSize(width: 500, height: 600)
         ) {
             APGWorkMacFAQView(
-                topics: APGWorkAppHelper.shared.faqTopics,
-                references: APGWorkAppHelper.shared.faqReferences,
+                topics: APGWorkAppSpecs.shared.faqTopics ?? [],
+                references: APGWorkAppSpecs.shared.faqReferences ?? [],
             )
         }
     }

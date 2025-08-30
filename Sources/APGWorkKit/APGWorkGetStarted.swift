@@ -28,7 +28,7 @@ public final class APGWorkGetStarted {
             size: CGSize(width: 900, height: 600)
         ) {
             APGWorkMacGetStartedView(
-                features: APGWorkAppHelper.shared.getStartedFeaturesList
+                features: APGWorkAppSpecs.shared.getStartedFeaturesList ?? []
             )
         }
     }
@@ -54,15 +54,15 @@ private struct APGWorkMacGetStartedView: View {
 
             ScrollView {
                 VStack(spacing: 16) {
-                    APGWorkMacFeatureList(listFeatureItem: APGWorkAppHelper.shared.getStartedFeaturesList)
+                    APGWorkMacFeatureList(listFeatureItem: APGWorkAppSpecs.shared.getStartedFeaturesList ?? [])
 
-                    if !APGWorkAppHelper.shared.getStartedFeaturesListLink.isEmpty {
-                        if let customColor = APGWorkAppHelper.workUIColor {
+                    if let ref = APGWorkAppSpecs.shared.getStartedFeaturesListLink {
+                        if let customColor = APGWorkAppSpecs.shared.workUIColor {
                             Text(APGWorkShared.completeFeatureList)
                                 .font(.title2)
                                 .foregroundColor(customColor)
                                 .onTapGesture {
-                                    APGCantrip.openRef(APGWorkAppHelper.shared.getStartedFeaturesListLink)
+                                    APGCantrip.openRef(ref)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 8)
@@ -72,7 +72,7 @@ private struct APGWorkMacGetStartedView: View {
                                 .font(.title2)
                                 .foregroundColor(.blue)
                                 .onTapGesture {
-                                    APGCantrip.openRef(APGWorkAppHelper.shared.getStartedFeaturesListLink)
+                                    APGCantrip.openRef(ref)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 8)

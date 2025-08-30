@@ -27,7 +27,7 @@ public struct APGWorkMacFeatureList: View {
             ForEach(Array(listFeatureItem.enumerated()), id: \.offset) { _, item in
                 HStack(alignment: .top, spacing: 20) {
                     if !item.symbolName.isEmpty {
-                        if let customColor = APGWorkAppHelper.workUIColor {
+                        if let customColor = APGWorkAppSpecs.shared.workUIColor {
                             Image(systemName: item.symbolName)
                                 .resizable()
                                 .scaledToFit()

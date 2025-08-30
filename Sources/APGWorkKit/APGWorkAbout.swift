@@ -76,8 +76,9 @@ private struct APGWorkMacAboutView: View {
                     GeometryReader { geo in
                         VStack(alignment: .leading, spacing: 0) {
                             VStack(alignment: .leading, spacing: 6) {
-                                if !APGWorkAppHelper.shared.aboutSymbolName.isEmpty {
-                                    if let nsImage = NSImage(systemSymbolName: APGWorkAppHelper.shared.aboutSymbolName, accessibilityDescription: String()) {
+                                if let aboutName = APGWorkAppSpecs.shared.aboutSymbolName {
+                                    if let nsImage = NSImage(systemSymbolName: aboutName,
+                                                             accessibilityDescription: String()) {
                                         Image(nsImage: nsImage)
                                             .renderingMode(.original)
                                             .interpolation(.high)
@@ -92,7 +93,7 @@ private struct APGWorkMacAboutView: View {
                                     Text(appName)
                                         .font(.system(size: 22))
                                         .bold()
-                                        .padding(.top, APGWorkAppHelper.shared.aboutSymbolName.isEmpty ? 0 : 8)
+                                        .padding(.top, APGWorkAppSpecs.shared.aboutSymbolName == nil ? 0 : 8)
                                 }
 
                                 Text(APGCantrip.appVersionString())
@@ -119,14 +120,14 @@ private struct APGWorkMacAboutView: View {
 
             HStack {
                 Spacer()
-                if !APGWorkAppHelper.shared.aboutAcknowledgmentsLink.isEmpty {
+                if let ref = APGWorkAppSpecs.shared.aboutAcknowledgmentsLink {
                     Button(APGWorkShared.acknowledgments) {
-                        APGCantrip.openRef(APGWorkAppHelper.shared.aboutAcknowledgmentsLink)
+                        APGCantrip.openRef(ref)
                     }
                 }
-                if !APGWorkAppHelper.shared.aboutLicensesLink.isEmpty {
+                if let ref = APGWorkAppSpecs.shared.aboutLicensesLink {
                     Button(APGWorkShared.licenses) {
-                        APGCantrip.openRef(APGWorkAppHelper.shared.aboutLicensesLink)
+                        APGCantrip.openRef(ref)
                     }
                 }
             }

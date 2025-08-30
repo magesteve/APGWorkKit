@@ -30,8 +30,10 @@ public final class APGWorkWhatsNew {
 
     /// Can show this window (resources filled)
     public static var canShow: Bool {
-        let empty = APGWorkAppHelper.shared.whatsNewFeaturesList.isEmpty
-        return !empty
+        if let _ = APGWorkAppSpecs.shared.whatsNewFeaturesList {
+            return true
+        }
+        return false
     }
 
     // MARK: - Static Functions
@@ -68,15 +70,15 @@ private struct APGWorkMacWhatsNewView: View {
 
             ScrollView {
                 VStack(spacing: 16) {
-                    APGWorkMacFeatureList(listFeatureItem: APGWorkAppHelper.shared.whatsNewFeaturesList)
+                    APGWorkMacFeatureList(listFeatureItem: APGWorkAppSpecs.shared.whatsNewFeaturesList ?? [])
 
-                    if !APGWorkAppHelper.shared.whatsNewFeaturesListLink.isEmpty {
-                        if let customColor = APGWorkAppHelper.workUIColor {
+                    if let link = APGWorkAppSpecs.shared.whatsNewFeaturesListLink {
+                        if let customColor = APGWorkAppSpecs.shared.workUIColor {
                             Text(APGWorkShared.completeFeatureList)
                                 .font(.title2)
                                 .foregroundColor(customColor)
                                 .onTapGesture {
-                                    APGCantrip.openRef(APGWorkAppHelper.shared.whatsNewFeaturesListLink)
+                                    APGCantrip.openRef(link)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 8)
@@ -86,7 +88,7 @@ private struct APGWorkMacWhatsNewView: View {
                                 .font(.title2)
                                 .foregroundColor(.blue)
                                 .onTapGesture {
-                                    APGCantrip.openRef(APGWorkAppHelper.shared.whatsNewFeaturesListLink)
+                                    APGCantrip.openRef(link)
                                 }
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .padding(.bottom, 8)
@@ -106,7 +108,7 @@ private struct APGWorkMacWhatsNewView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .keyboardShortcut(.defaultAction)
-                .tint(APGWorkAppHelper.workUIColor ?? .accentColor)
+                .tint(APGWorkAppSpecs.shared.workUIColor ?? .accentColor)
                 
                 Spacer()
             }
