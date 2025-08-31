@@ -23,7 +23,7 @@ public struct APGWorkAppSpecs: Decodable {
     ///
     /// Singleton reference
     @MainActor
-    public static let shared = APGWorkAppSpecs()
+    public static var shared = APGWorkAppSpecs()
     
     // MARK: - Public Variables
     
