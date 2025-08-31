@@ -14,15 +14,15 @@ import APGIntentKit
 import APGCantripKit
 import SwiftUI
 
-// MARK: - Class
+// MARK: - Struct
 
 /// Specs for the Work app
-@MainActor
-public class APGWorkAppSpecs {
+public struct APGWorkAppSpecs: Decodable {
     
     // MARK: - Static Variables
     ///
     /// Singleton reference
+    @MainActor
     public static let shared = APGWorkAppSpecs()
     
     // MARK: - Public Variables
@@ -80,6 +80,7 @@ public class APGWorkAppSpecs {
     
     // MARK: - Computed Var
     
+    @MainActor
     public var workUIColor: Color? {
         guard let rgb = workRGB else { return nil }
         
@@ -87,6 +88,7 @@ public class APGWorkAppSpecs {
     }
     
     /// Standard background color for banner areas (e.g., toolbar rows).
+    @MainActor
     public static var backgroundBannerColor: Color {
         Color(APGCantripColor.windowBackgroundColor).opacity(0.95)
     }
@@ -94,7 +96,8 @@ public class APGWorkAppSpecs {
     // MARK: - Public Functions
     
     /// Add additional items to premade intents
-    public func addAdditionalMenuIntents(about: [String]? = nil,
+    @MainActor
+    public mutating func addAdditionalMenuIntents(about: [String]? = nil,
                                          help: [String]? = nil) {
         self.aboutTokens = about
         self.helpTokens = help
@@ -108,6 +111,7 @@ public class APGWorkAppSpecs {
     // MARK: - Static Function
     
     /// Init App stuff
+    @MainActor
     public static func appInit() {
         APGIntentInfoList.shared.add(contentsOf: [
             APGIntentInfo(token: APGIntent.about,
@@ -136,6 +140,7 @@ public class APGWorkAppSpecs {
     }
     
     /// Setup App stuff
+    @MainActor
     public static func appPrepare() {
         var someAbout = [APGIntent.about]
         if let _ = APGWorkAppSpecs.shared.promoTileList {
@@ -195,6 +200,7 @@ public class APGWorkAppSpecs {
     }
     
     /// Start App stuff
+    @MainActor
     public static func appStart() {
     }
     

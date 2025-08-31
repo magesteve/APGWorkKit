@@ -44,6 +44,7 @@ public enum APGWorkShared {
     public static let completeFeatureList: String = "Complete Feature List"
     public static let newFeatureList: String = "New Feature List"
     public static let licenses: String = "Licenses"
+    public static let unknown: String = "Unknown"
     
     // MARK: Identifiers
     
@@ -73,7 +74,7 @@ public enum APGWorkShared {
     public static var aboutAppName: String {
         let name = APGCantrip.appName()
         
-        guard name.isEmpty else { return about }
+        guard !name.isEmpty else { return about }
         
         return about + space + name
     }
@@ -82,7 +83,7 @@ public enum APGWorkShared {
     public static var whatsNewAppName: String {
         let name = APGCantrip.appName()
         
-        guard name.isEmpty else { return whatsNew }
+        guard !name.isEmpty else { return whatsNew }
         
         return whatsNew + space + inString + space + name
     }
@@ -91,7 +92,7 @@ public enum APGWorkShared {
     public static var welcomeToAppName: String {
         let name = APGCantrip.appName()
 
-        guard name.isEmpty else { return welcome }
+        guard !name.isEmpty else { return welcome }
         
         return welcome + space + toString + space + name
     }
@@ -100,7 +101,7 @@ public enum APGWorkShared {
     public static var faqForAppName: String {
         let name = APGCantrip.appName()
 
-        guard name.isEmpty else { return faq }
+        guard !name.isEmpty else { return faq }
         
         return faq + space + forString + space + name
     }
