@@ -12,7 +12,12 @@ import APGCantripKit
 
 // MARK: - Structure
 
+/// Information for a Promo tile
+@MainActor
 public struct APGWorkPromoTile: Decodable {
+    public static var artHeight = 500
+    public static var artWidth = 900
+    
     public var title: String?
     public var body: String?
     public var imageName: String?
@@ -33,7 +38,9 @@ public struct APGWorkPromoTile: Decodable {
         
         if let imageName,
             let image = APGCantripImage(named: imageName) {
-            result.cantripImage(image)
+            let art = AttributedString.cantripImage(image, size: CGSize(width: APGWorkPromoTile.artWidth, height: APGWorkPromoTile.artHeight))
+            result.cantripCentered(art)
+            result.cantripParagraphEnd()
         }
         
         if let title {
@@ -50,5 +57,6 @@ public struct APGWorkPromoTile: Decodable {
         }
         
         return result
+
     }
 }

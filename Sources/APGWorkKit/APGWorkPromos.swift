@@ -26,6 +26,11 @@ import AppKit
 /// Static manager for the Promos window..
 @MainActor
 public final class APGWorkPromos {
+    
+    // MARK: - Static
+    
+    public static var promoWidth = 1024
+    public static var promoHeight = 700
 
     // MARK: - Init
 
@@ -37,24 +42,23 @@ public final class APGWorkPromos {
     public static func show() {
         let name = APGIntentInfoList.shared.find(token: APGIntent.promos)?.name ?? APGWorkShared.otherApps
         
-        APGWidgetWindow.makeWindow(
-            title: name,
-            ident: APGWorkShared.identifierPromosWindow,
-            size: CGSize(width: 500, height: 600)
-        ) {
-            APGWorkMacPromosView(tiles: APGWorkAppSpecs.shared.promoTileList ?? [])
-        }
-    }
-}
+        if let list = APGWorkAppSpecs.shared.promoTileList {
 
-// MARK: - SwiftUI View
-
-private struct APGWorkMacPromosView: View {
-    let tiles: [APGWorkPromoTile]
-
-    var body: some View {
-        VStack(spacing: 0) {
+            var listViews: [APGWidgetUIRichTextView] = []
             
+            for promo in list {
+                let a = promo.makeAttributedString()
+                listViews.append(APGWidgetUIRichTextView(attributedText:a))
+            }
+            
+            APGWidgetWindow.makeWindow(
+                title: name,
+                ident: APGWorkShared.identifierPromosWindow,
+                size: CGSize(width: APGWorkPromos.promoWidth, height: APGWorkPromos.promoHeight)
+            ) {
+                APGWidgetSlideShow(views: listViews)
+            }
         }
     }
 }
+

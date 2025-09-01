@@ -143,21 +143,21 @@ public struct APGWorkAppSpecs: Decodable {
     @MainActor
     public static func appPrepare() {
         if APGWorkDebug.debugOn {
-            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(1), name: APGWorkDebug.debugName1 ?? APGWorkShared.unused))
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(1), name: APGWorkDebug.debugName1 ?? APGWorkShared.unused, alwaysOn: APGWorkDebug.debugName1 != nil))
 
-            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(2), name: APGWorkDebug.debugName2 ?? APGWorkShared.unused))
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(2), name: APGWorkDebug.debugName2 ?? APGWorkShared.unused, alwaysOn: APGWorkDebug.debugName2 != nil))
 
-            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(3), name: APGWorkDebug.debugName3 ?? APGWorkShared.unused))
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(3), name: APGWorkDebug.debugName3 ?? APGWorkShared.unused, alwaysOn: APGWorkDebug.debugName3 != nil))
 
-            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(4), name: APGWorkDebug.debugName4 ?? APGWorkShared.unused))
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(4), name: APGWorkDebug.debugName4 ?? APGWorkShared.unused, alwaysOn: APGWorkDebug.debugName4 != nil))
 
-            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(5), name: APGWorkDebug.debugName5 ?? APGWorkShared.unused))
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(5), name: APGWorkDebug.debugName5 ?? APGWorkShared.unused, alwaysOn: APGWorkDebug.debugName5 != nil))
 
-            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(6), name: APGWorkDebug.debugName6 ?? APGWorkShared.unused))
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(6), name: APGWorkDebug.debugName6 ?? APGWorkShared.unused, alwaysOn: APGWorkDebug.debugName6 != nil))
 
-            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(7), name: APGWorkDebug.debugName7 ?? APGWorkShared.unused))
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(7), name: APGWorkDebug.debugName7 ?? APGWorkShared.unused, alwaysOn: APGWorkDebug.debugName7 != nil))
 
-            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(8), name: APGWorkDebug.debugName8 ?? APGWorkShared.unused))
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(8), name: APGWorkDebug.debugName8 ?? APGWorkShared.unused, alwaysOn: APGWorkDebug.debugName8 != nil))
             
             if let action = APGWorkDebug.debugAction1 {
                 APGIntentActionList.sharedApp.addAction(token: APGIntent.debugToken(1), action: action)
