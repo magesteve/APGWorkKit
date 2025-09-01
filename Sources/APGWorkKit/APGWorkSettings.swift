@@ -23,7 +23,7 @@ import AppKit
 
 @MainActor
 public final class APGWorkSettingsModel: ObservableObject {
-    @Published public var selectedToken: String = ""
+    @Published public var selectedToken: String = String()
     public var didSetInitialToken: Bool = false
 }
 
@@ -45,7 +45,7 @@ public final class APGWorkSettings {
     // MARK: - Static Function
 
     /// Show the Settings window with control panel selector.
-    public static func show(token: String = "") {
+    public static func show(token: String = String()) {
         
 #if canImport(AppKit)
 

@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/magesteve/APGCantripKit.git",
       "state" : {
-        "revision" : "600631ba78bb92d5f7262414e5e15fee969ba2cd",
-        "version" : "0.5.1"
+        "revision" : "110d81d41fecb3a143898c5ceb779ca416553ffa",
+        "version" : "0.5.2"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/magesteve/APGIntentKit.git",
       "state" : {
-        "revision" : "f630ee4b9c26d715d4f3a816cae025dd0653a12c",
-        "version" : "0.5.4"
+        "revision" : "6aef0040be9a8b4ff48e7286f14f271b8a3e3644",
+        "version" : "0.5.5"
       }
     },
     {

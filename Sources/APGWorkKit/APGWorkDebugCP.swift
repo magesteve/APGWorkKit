@@ -4,11 +4,14 @@
 //
 //  Created by Steve Sheets on 8/29/25.
 //
+//  Debug Window Control Panel
+//
 
 // MARK: - Imports
 
 import Foundation
 import SwiftUI
+import APGIntentKit
 
 // MARK: Globals
 
@@ -21,11 +24,11 @@ public var gAPGDebugLevel: Int = 0
 @MainActor
 public class APGWorkDebugCP: APGWorkControlPanel {
     
-    public static let debugToken = "APGWork-Debug"
+    public static let debugToken = APGIntent.debug
     
     public static func register() {
         let cp = APGWorkDebugCP(token: APGWorkDebugCP.debugToken)
-        cp.registerControlPanel(name: "Debug Settings", shortName: "Debug", symbolName: "sun.max")
+        cp.registerControlPanel(name: APGWorkShared.debugSettings, shortName: APGWorkShared.debug, symbolName: APGWorkShared.sfDebugToken)
     }
     
     @ViewBuilder
@@ -38,12 +41,13 @@ public class APGWorkDebugCP: APGWorkControlPanel {
         
         var body: some View {
             VStack(alignment: .leading, spacing: 12) {
-                Text("Debug Level")
+                Text(APGWorkShared.debug + APGWorkShared.space + APGWorkShared.level)
                     .font(.headline)
                 
-                Picker("", selection: $level) {
+                Picker(String(), selection: $level) {
                     ForEach(0...5, id: \.self) { level in
-                        Text("Level \(level)").tag(level)
+                        let title = APGWorkShared.level + APGWorkShared.space + String(level)
+                        Text(title).tag(level)
                     }
                 }
                 .pickerStyle(PopUpButtonPickerStyle())

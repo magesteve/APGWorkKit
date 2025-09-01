@@ -34,6 +34,8 @@ public enum APGWorkShared {
     public static let soundSettings: String = "Sound Settings"
     public static let sound: String = "Sound"
     public static let debug: String = "Debug"
+    public static let level: String = "Level"
+    public static let unused: String = "Unused"
     public static let debugSettings: String = "Debug Settings"
     public static let faq: String = "FAQ"
     public static let getStarted: String = "Get Started"
@@ -67,7 +69,8 @@ public enum APGWorkShared {
     public static let sfGetStartedToken = "hand.wave"
     public static let sfSettingsToken = "hand.wave"
     public static let sfPromosToken = "hand.wave"
-    
+    public static let sfDebugToken = "hand.wave"
+
     // MARK: Bundle-derived strings
     
     /// Title for About window.

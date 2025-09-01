@@ -142,6 +142,67 @@ public struct APGWorkAppSpecs: Decodable {
     /// Setup App stuff
     @MainActor
     public static func appPrepare() {
+        if APGWorkDebug.debugOn {
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(1), name: APGWorkDebug.debugName1 ?? APGWorkShared.unused))
+
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(2), name: APGWorkDebug.debugName2 ?? APGWorkShared.unused))
+
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(3), name: APGWorkDebug.debugName3 ?? APGWorkShared.unused))
+
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(4), name: APGWorkDebug.debugName4 ?? APGWorkShared.unused))
+
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(5), name: APGWorkDebug.debugName5 ?? APGWorkShared.unused))
+
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(6), name: APGWorkDebug.debugName6 ?? APGWorkShared.unused))
+
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(7), name: APGWorkDebug.debugName7 ?? APGWorkShared.unused))
+
+            APGIntentInfoList.shared.add(APGIntentInfo(token: APGIntent.debugToken(8), name: APGWorkDebug.debugName8 ?? APGWorkShared.unused))
+            
+            if let action = APGWorkDebug.debugAction1 {
+                APGIntentActionList.sharedApp.addAction(token: APGIntent.debugToken(1), action: action)
+            }
+
+            if let action = APGWorkDebug.debugAction2 {
+                APGIntentActionList.sharedApp.addAction(token: APGIntent.debugToken(2), action: action)
+            }
+
+            if let action = APGWorkDebug.debugAction3 {
+                APGIntentActionList.sharedApp.addAction(token: APGIntent.debugToken(3), action: action)
+            }
+
+            if let action = APGWorkDebug.debugAction4 {
+                APGIntentActionList.sharedApp.addAction(token: APGIntent.debugToken(4), action: action)
+            }
+
+            if let action = APGWorkDebug.debugAction5 {
+                APGIntentActionList.sharedApp.addAction(token: APGIntent.debugToken(5), action: action)
+            }
+
+            if let action = APGWorkDebug.debugAction6 {
+                APGIntentActionList.sharedApp.addAction(token: APGIntent.debugToken(6), action: action)
+            }
+
+            if let action = APGWorkDebug.debugAction7 {
+                APGIntentActionList.sharedApp.addAction(token: APGIntent.debugToken(7), action: action)
+            }
+
+            if let action = APGWorkDebug.debugAction8 {
+                APGIntentActionList.sharedApp.addAction(token: APGIntent.debugToken(8), action: action)
+            }
+
+            APGIntentMacTools.addMenuBeforeHelp(named: APGWorkShared.debug, tokens: [
+                APGIntent.debugToken(1),
+                APGIntent.debugToken(2),
+                APGIntent.debugToken(3),
+                APGIntent.debugToken(4),
+                APGIntent.debugToken(5),
+                APGIntent.debugToken(6),
+                APGIntent.debugToken(7),
+                APGIntent.debugToken(8)
+            ] )
+        }
+
         var someAbout = [APGIntent.about]
         if let _ = APGWorkAppSpecs.shared.promoTileList {
             someAbout.append(contentsOf: [APGIntent.promos])
@@ -204,6 +265,64 @@ public struct APGWorkAppSpecs: Decodable {
     public static func appStart() {
     }
     
+}
+
+/// Debug Struct
+@MainActor
+public struct APGWorkDebug {
+    // MARK: - Static Var
+    
+    /// Debug On
+    public static var debugOn: Bool = false
+    
+    /// Debug 1 String
+    public static var debugName1: String?
+    
+    /// Debug 1 Action
+    public static var debugAction1: APGIntentActionClosure?
+    
+    /// Debug 2 String
+    public static var debugName2: String?
+    
+    /// Debug 2 Action
+    public static var debugAction2: APGIntentActionClosure?
+    
+    /// Debug 3 String
+    public static var debugName3: String?
+    
+    /// Debug 3 Action
+    public static var debugAction3: APGIntentActionClosure?
+    
+    /// Debug 4 String
+    public static var debugName4: String?
+    
+    /// Debug 4 Action
+    public static var debugAction4: APGIntentActionClosure?
+    
+    /// Debug 5 String
+    public static var debugName5: String?
+    
+    /// Debug 5 Action
+    public static var debugAction5: APGIntentActionClosure?
+    
+    /// Debug 6 String
+    public static var debugName6: String?
+    
+    /// Debug 6 Action
+    public static var debugAction6: APGIntentActionClosure?
+    
+    /// Debug 7 String
+    public static var debugName7: String?
+    
+    /// Debug 7 Action
+    public static var debugAction7: APGIntentActionClosure?
+    
+    /// Debug 8 String
+    public static var debugName8: String?
+    
+    /// Debug 8 Action
+    public static var debugAction8: APGIntentActionClosure?
+
 }
 
 // MARK: - Extension
